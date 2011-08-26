@@ -1,0 +1,19 @@
+Source: convergence
+Section: net
+Priority: extra
+Maintainer: aszlig <aszlig@redmoonstudios.org>
+Build-Depends: debhelper (>= 8.0.0), python (>= 2.6.6-3)
+Standards-Version: 3.9.2
+Homepage: http://convergence.io/
+
+Package: convergence-notary
+Section: net
+Architecture: all
+Depends: ${python:Depends}, python-twisted-web, python-m2crypto, python-openssl
+Description: An alternative to the SSL CA system (Notary server)
+ Convergence is a secure replacement for the Certificate Authority System.
+ Rather than employing a traditionally hard-coded list of immutable CAs,
+ Convergence allows you to configure a dynamic set of Notaries which use
+ network perspective to validate your communication.
+ .
+ This package contains everything you need to run a notary server.
