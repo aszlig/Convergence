@@ -1,0 +1,23 @@
+#!/bin/sh
+set -e;
+
+SSL_PUB="/etc/ssl/certs/convergence.pem";
+SSL_PRIV="/etc/ssl/private/convergence.key";
+
+if [ "x$1" = "xconfigure" ];
+then
+	if [ -s "$SSL_PUB" ] && [ -s "$SSL_PRIV" ];
+	then
+		echo -n "Notary SSL certificate already exists,";
+		echo " no need to create it.";
+	else
+		echo -n "Creating notary SSL certificate...";
+		openssl req -newkey rsa:2048 -x509 -days 14600 \
+			-nodes -out "$SSL_PUB" -keyout "$SSL_PRIV";
+		echo " done.";
+	fi;
+fi;
+
+#DEBHELPER#
+
+exit 0;
