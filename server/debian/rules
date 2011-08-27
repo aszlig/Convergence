@@ -6,6 +6,10 @@ override_dh_auto_install:
 	dh_auto_install --destdir=$(CURDIR)/debian/tmp
 
 override_dh_installinit:
-	install -p -D -m755 init-script/convergence \
-		$(CURDIR)/debian/convergence-notary/etc/init.d/convergence-notary
+	sed -e '/^DAEMON=/s!=.*!=/usr/sbin/convergence-notary!' \
+	    -e '/^PATH=/c PATH=/sbin:/bin:/usr/sbin:/usr/bin' \
+	    init-script/convergence > \
+	    $(CURDIR)/debian/convergence-notary/etc/init.d/convergence-notary
+	chown root:root $(CURDIR)/debian/convergence-notary/etc/init.d/convergence-notary
+	chmod 0755 $(CURDIR)/debian/convergence-notary/etc/init.d/convergence-notary
 	dh_installinit --onlyscripts
