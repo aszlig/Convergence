@@ -1,0 +1,12 @@
+#!/bin/sh
+set -e;
+
+if [ "x$1" = "xpurge" ];
+then
+	rm -f /etc/ssl/certs/convergence.pem;
+	rm -f /etc/ssl/private/convergence.key;
+fi;
+
+#DEBHELPER#
+
+exit 0;
