@@ -1,2 +1,4 @@
-debian/tmp/usr/bin/* usr/sbin
+debian/tmp/usr/bin/convergence-bundle usr/sbin
+debian/tmp/usr/bin/convergence-createdb usr/sbin
+debian/tmp/usr/bin/convergence-notary usr/sbin
 debian/tmp/usr/lib/* usr/lib
