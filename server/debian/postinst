@@ -16,6 +16,13 @@ then
 			-nodes -out "$SSL_PUB" -keyout "$SSL_PRIV";
 		echo " done.";
 	fi;
+
+	if [ ! -s /var/lib/convergence/convergence.db ];
+	then
+		echo -n "Creating notary database...";
+		convergence-createdb;
+		echo " done.";
+	fi;
 fi;
 
 #DEBHELPER#
